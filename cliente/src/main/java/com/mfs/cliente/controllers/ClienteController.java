@@ -1,0 +1,26 @@
+package com.mfs.cliente.controllers;
+
+import com.mfs.cliente.models.ClienteModel;
+import com.mfs.cliente.repository.ClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(path = "/clientes")
+public class ClienteController {
+
+    @Autowired
+    private ClienteRepository clienteRepository;
+
+    @GetMapping
+    List<ClienteModel> findAll(){
+        return clienteService.findAll();
+    }
+    @PostMapping
+    public ClienteModel criarCliente(@RequestBody ClienteModel clienteModel){
+        return clienteService.criarPessoa(clienteModel);
+    }
+
+}
